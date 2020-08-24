@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Maiconfsantos/zabbix/issues"
   },
-  "homepage": "https://github.com/Maiconfsantos/zabbix#readme"
+  "homepage": "https://github.com/Maiconfsantos/zabbix#readme",
+  "dependencies": {
+    "zabbix-promise": "^2.0.2"
+  }
 }
