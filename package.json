@@ -1,0 +1,23 @@
+{
+  "name": "zabbix",
+  "version": "1.0.0",
+  "description": "zabbix conenction to retieve data",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maiconfsantos/zabbix.git"
+  },
+  "keywords": [
+    "zabbix",
+    "nodejs"
+  ],
+  "author": "Maicon Flor dos Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maiconfsantos/zabbix/issues"
+  },
+  "homepage": "https://github.com/Maiconfsantos/zabbix#readme"
+}
