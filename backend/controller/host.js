@@ -8,14 +8,15 @@ exports.get_host_corp= async (req, res) => {
         })
 
         let data = [];
-        
+        console.log(hosts);
         hosts.map( iten =>{
-        hostObject = {
-            host: iten.host,
-            description: iten.description,
-            interfaces: iten.interfaces
-        }
-        data = [...data, hostObject]
+            hostObject = {
+                host: iten.host,
+                description: iten.description,
+                interfaces: iten.interfaces
+            }
+
+            data = [...data, hostObject]
         })
 
         zabbixCorp.logout()
