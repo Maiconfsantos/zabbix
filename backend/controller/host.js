@@ -8,7 +8,7 @@ exports.get_host_corp= async (req, res) => {
         })
 
         let data = [];
-        console.log(hosts);
+
         hosts.map( iten =>{
             hostObject = {
                 host: iten.host,
