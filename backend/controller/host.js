@@ -1,4 +1,5 @@
 const zabbixCorp = require('../utils/corporativo');
+const { checkDatainRange } = require('../utils/rangeIp')
 
 exports.get_host_corp= async (req, res) => {
     try {
@@ -8,22 +9,36 @@ exports.get_host_corp= async (req, res) => {
         })
 
         let data = [];
+        let ipRangePromises = [];
 
         hosts.map( iten =>{
-            hostObject = {
-                host: iten.host,
-                description: iten.description,
-                interfaces: iten.interfaces
-            }
+            ipRangePromise = checkDatainRange(iten.interfaces[0].ip)
+            ipRangePromises = [...ipRangePromises,ipRangePromise]
 
-            data = [...data, hostObject]
+            ipRangePromise.then( (Iprangedata) =>{
+
+                hostObject = {
+                    host: iten.host,
+                    description: iten.description,
+                    interfaces: iten.interfaces,
+                    Iprangedata
+                }
+    
+                data = [...data, hostObject]
+
+            })
+           
+
+            return(ipRangePromises);
         })
 
-        zabbixCorp.logout()
-        res.json(data)
+        let processed_promise = Promise.all(ipRangePromises)
+        processed_promise.then((results) => {
+            zabbixCorp.logout()
+            res.json(data)
+        })
+
     } catch (error) {
       console.error(error)
     }
 }
-
-
